@@ -14035,7 +14035,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Informe-Operativo-de-seguridad-Balnearia">Informe Operativo de seguridad Balnearia<a class="anchor-link" href="#Informe-Operativo-de-seguridad-Balnearia">&#182;</a></h1><h2 id="Sector:-Nautica-Este">Sector: Nautica Este<a class="anchor-link" href="#Sector:-Nautica-Este">&#182;</a></h2><h3 id="Equipo-de-Trabajo">Equipo de Trabajo<a class="anchor-link" href="#Equipo-de-Trabajo">&#182;</a></h3><ul>
+<h1 id="Informe-Operativo-de-seguridad-Balnearia">Informe Operativo de seguridad Balnearia<a class="anchor-link" href="#Informe-Operativo-de-seguridad-Balnearia">&#182;</a></h1><p>El objetivo de este informe es analizar y presentar los datos recopilados por el equipo "Náutica Este" durante el operativo de seguridad balnearia temporada 2023-2024, con el fin de proporcionar información para la planificación estratégica de futuras temporadas. Se pretende identificar patrones, tendencias y áreas de mejora, así como optimizar los recursos y protocolos de seguridad.</p>
+<h2 id="Sector:-Nautica-Este">Sector: Nautica Este<a class="anchor-link" href="#Sector:-Nautica-Este">&#182;</a></h2><h3 id="Equipo-de-Trabajo">Equipo de Trabajo<a class="anchor-link" href="#Equipo-de-Trabajo">&#182;</a></h3><ul>
 <li>Briones Franco</li>
 <li>Salas Daniel</li>
 <li>Pablo Kogan</li>
@@ -14065,6 +14066,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li>Moto de Agua Ruso: Yamaha </li>
 </ul>
 </li>
+</ul>
+<h3 id="Fuente-Informaci%C3%B3n">Fuente Informaci&#243;n<a class="anchor-link" href="#Fuente-Informaci%C3%B3n">&#182;</a></h3><ul>
+<li>Registro del equipo Nautica Este</li>
+<li>Temperatura histórica (<a href="https://www.meteored.com.ar/tiempo-en_Neuquen-America+Sur-Argentina-Neuquen--sactual-16888.html">https://www.meteored.com.ar/tiempo-en_Neuquen-America+Sur-Argentina-Neuquen--sactual-16888.html</a>)</li>
 </ul>
 
 </div>
@@ -14187,6 +14192,22 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#from ipyleaflet import Map, basemapa</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"Temperatura.csv"</span><span class="p">)</span>
 <span class="n">df_temp</span><span class="p">[</span><span class="s1">'fecha'</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_temp</span><span class="p">[</span><span class="s2">"fecha"</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'</span><span class="si">%d</span><span class="s1">-%m-%Y'</span><span class="p">)</span>
 
@@ -14205,7 +14226,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Totales-Temporada">Totales Temporada<a class="anchor-link" href="#Totales-Temporada">&#182;</a></h3>
+<h3 id="agrupado_embarcacion-Temporada">agrupado_embarcacion Temporada<a class="anchor-link" href="#agrupado_embarcacion-Temporada">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14217,14 +14238,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">totales</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
     <span class="s1">'horas'</span><span class="p">:</span><span class="nb">sum</span><span class="p">,</span>
     <span class="s1">'litrosNafta'</span><span class="p">:</span><span class="nb">sum</span><span class="p">,</span>
     <span class="s1">'km'</span><span class="p">:</span><span class="nb">sum</span><span class="p">,</span>
     <span class="s1">'prevenciones'</span><span class="p">:</span><span class="nb">sum</span><span class="p">,</span>
     <span class="s1">'asistencias'</span><span class="p">:</span><span class="nb">sum</span><span class="p">,</span>
-    <span class="s1">'rescates'</span><span class="p">:</span><span class="nb">sum</span>
+    <span class="s1">'rescates'</span><span class="p">:</span><span class="nb">sum</span><span class="p">,</span>
+    <span class="s1">'fecha'</span><span class="p">:</span><span class="s1">'count'</span>
 <span class="p">})</span>
+<span class="n">totales</span><span class="p">[</span><span class="s1">'velocidad Media km/h'</span><span class="p">]</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">totales</span><span class="p">[</span><span class="s1">'km'</span><span class="p">]</span><span class="o">/</span><span class="n">totales</span><span class="p">[</span><span class="s1">'horas'</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">totales</span><span class="p">[</span><span class="s1">'consumo Medio l/km'</span><span class="p">]</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">totales</span><span class="p">[</span><span class="s1">'litrosNafta'</span><span class="p">]</span><span class="o">/</span><span class="n">totales</span><span class="p">[</span><span class="s1">'km'</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">totales</span><span class="p">[</span><span class="s1">'consumo Medio l/h'</span><span class="p">]</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">totales</span><span class="p">[</span><span class="s1">'litrosNafta'</span><span class="p">]</span><span class="o">/</span><span class="n">totales</span><span class="p">[</span><span class="s1">'horas'</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">totales</span><span class="p">[</span><span class="s1">'prevenciones Media prevenciones/hora'</span><span class="p">]</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">totales</span><span class="p">[</span><span class="s1">'prevenciones'</span><span class="p">]</span><span class="o">/</span><span class="n">totales</span><span class="p">[</span><span class="s1">'horas'</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">totales</span>
 </pre></div>
 
      </div>
@@ -14248,12 +14275,17 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>horas            107.0
-litrosNafta      587.5
-km              1540.0
-prevenciones     644.0
-asistencias       36.0
-rescates          14.0
+<pre>horas                                    107.00
+litrosNafta                              587.50
+km                                      1540.00
+prevenciones                             644.00
+asistencias                               36.00
+rescates                                  14.00
+fecha                                     56.00
+velocidad Media km/h                      14.39
+consumo Medio l/km                         0.38
+consumo Medio l/h                          5.49
+prevenciones Media prevenciones/hora       6.02
 dtype: float64</pre>
 </div>
 
@@ -14287,6 +14319,11 @@ dtype: float64</pre>
     <span class="s1">'asistencias'</span><span class="p">:</span><span class="nb">sum</span><span class="p">,</span>
     <span class="s1">'rescates'</span><span class="p">:</span><span class="nb">sum</span>
 <span class="p">})</span>
+<span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'velocidad Media km/h'</span><span class="p">]</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'km'</span><span class="p">]</span><span class="o">/</span><span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'horas'</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'consumo Medio l/km'</span><span class="p">]</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'litrosNafta'</span><span class="p">]</span><span class="o">/</span><span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'km'</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'consumo Medio l/h'</span><span class="p">]</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'litrosNafta'</span><span class="p">]</span><span class="o">/</span><span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'horas'</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'prevenciones Media prevenciones/hora'</span><span class="p">]</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'prevenciones'</span><span class="p">]</span><span class="o">/</span><span class="n">agrupado_embarcacion</span><span class="p">[</span><span class="s1">'horas'</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+
 <span class="n">agrupado_dia</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'dia_nombre'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
     <span class="s1">'horas'</span><span class="p">:</span><span class="nb">sum</span><span class="p">,</span>
     <span class="s1">'litrosNafta'</span><span class="p">:</span><span class="nb">sum</span><span class="p">,</span>
@@ -14368,9 +14405,17 @@ dtype: float64</pre>
       <th>prevenciones</th>
       <th>asistencias</th>
       <th>rescates</th>
+      <th>velocidad Media km/h</th>
+      <th>consumo Medio l/km</th>
+      <th>consumo Medio l/h</th>
+      <th>prevenciones Media prevenciones/hora</th>
     </tr>
     <tr>
       <th>embarcacion</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -14388,6 +14433,10 @@ dtype: float64</pre>
       <td>121</td>
       <td>5</td>
       <td>3</td>
+      <td>16.47</td>
+      <td>0.56</td>
+      <td>9.26</td>
+      <td>7.12</td>
     </tr>
     <tr>
       <th>ODB3</th>
@@ -14397,6 +14446,10 @@ dtype: float64</pre>
       <td>523</td>
       <td>31</td>
       <td>11</td>
+      <td>14.00</td>
+      <td>0.34</td>
+      <td>4.78</td>
+      <td>5.81</td>
     </tr>
   </tbody>
 </table>
