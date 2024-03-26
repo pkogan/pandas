@@ -13988,11 +13988,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
   }
 }
 </style>
-<style type="text/css">
-  .jp-InputPrompt,.jp-OutputPrompt,.jp-OutputArea-prompt,.jp-CodeMirrorEditor {
-    display: none;
-}
-</style>
+
 <!-- Load mathjax -->
     <script src="file:///usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full,Safe"> </script>
     <!-- MathJax configuration -->
@@ -14156,11 +14152,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">Mapa de lugares y zonas de mayor cantidad de prevenciones<a class="anchor-link" href="#Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">&#182;</a></h3>
+<h3 id="Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">Mapa de lugares y zonas de mayor cantidad de prevenciones<a class="anchor-link" href="#Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">&#182;</a></h3><p>[[map.html|map.html]]</p>
+
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14221,7 +14218,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="n">heatmap</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span>
     <span class="n">locations</span><span class="o">=</span><span class="n">locations</span><span class="p">,</span>
-    <span class="n">radius</span><span class="o">=</span><span class="mi">15</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mi">30</span>
 <span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">heatmap</span><span class="p">)</span>
 
@@ -14237,7 +14234,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">marker</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_location_changed</span><span class="p">,</span> <span class="s1">'location'</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="c1">#display(m)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'map.html'</span><span class="p">)</span>
 
 <span class="c1"># Now that the marker is on the Map, you can drag it with your mouse,</span>
 <span class="c1"># it will automatically update the `marker.location` attribute in Python</span>
@@ -14251,29 +14249,21 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#df_lugares=pd.DataFrame(lugaresagregados)</span>
+<span class="c1">#df_lugares.to_csv('lugaresagregados.csv')</span>
+</pre></div>
 
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
-<pre>Map(center=[-38.9774, -68.0453], controls=(ZoomControl(options=[&#39;position&#39;, &#39;zoom_in_text&#39;, &#39;zoom_in_title&#39;, &#39;…</pre>
+     </div>
 </div>
-
 </div>
-
-</div>
-
 </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -14323,23 +14313,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="c1">#    return int(fila.index()/7)</span>
 
 <span class="c1">#df['semanaNumero']=df.apply(transform_nro_semana, axis=1)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_lugares</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lugaresagregados</span><span class="p">)</span>
-<span class="n">df_lugares</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'lugaresagregados.csv'</span><span class="p">)</span>
 </pre></div>
 
      </div>
