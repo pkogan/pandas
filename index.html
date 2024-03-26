@@ -14156,7 +14156,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">Mapa de lugares y zonas de mayor cantidad de prevenciones<a class="anchor-link" href="#Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">&#182;</a></h3><p>(map.html|map.html)</p>
+<h3 id="Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">Mapa de lugares y zonas de mayor cantidad de prevenciones<a class="anchor-link" href="#Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">&#182;</a></h3><p>(<a href="https://pkogan.github.io/pandas/map.html">https://pkogan.github.io/pandas/map.html</a>)</p>
 
 </div>
 </div>
@@ -14238,7 +14238,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">marker</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_location_changed</span><span class="p">,</span> <span class="s1">'location'</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
 
+
 <span class="c1">#display(m)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">'100%'</span>
+<span class="n">m</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="s1">'800px'</span>
 <span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'map.html'</span><span class="p">)</span>
 
 <span class="c1"># Now that the marker is on the Map, you can drag it with your mouse,</span>
