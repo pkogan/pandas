@@ -14149,6 +14149,152 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">Mapa de lugares y zonas de mayor cantidad de prevenciones<a class="anchor-link" href="#Mapa-de-lugares-y-zonas-de-mayor-cantidad-de-prevenciones">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipyleaflet</span> <span class="kn">import</span> <span class="n">Map</span><span class="p">,</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">basemaps</span><span class="p">,</span> <span class="n">Popup</span><span class="p">,</span> <span class="n">AwesomeIcon</span><span class="p">,</span> <span class="n">Heatmap</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="k">def</span> <span class="nf">addlabel</span><span class="p">(</span><span class="n">marker</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">'life-ring'</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">):</span>
+    <span class="n">icon_color</span><span class="o">=</span><span class="s1">'dark'</span><span class="o">+</span><span class="n">color</span>
+    <span class="c1">#print(icon_color+"*")</span>
+    <span class="n">icon1</span> <span class="o">=</span> <span class="n">AwesomeIcon</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">marker_color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+        <span class="c1">#icon_color=icon_color,</span>
+        <span class="n">spin</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">message1</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">()</span>
+    <span class="n">message1</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">marker</span><span class="o">.</span><span class="n">name</span>
+
+<span class="c1">#message1.placeholder = "PlaceholderSome HTML"</span>
+<span class="c1">#message1.description = "DescriptionSome HTML"</span>
+
+    <span class="n">popup</span> <span class="o">=</span> <span class="n">Popup</span><span class="p">(</span>
+        <span class="n">location</span><span class="o">=</span><span class="n">marker</span><span class="o">.</span><span class="n">location</span><span class="p">,</span>
+        <span class="n">child</span><span class="o">=</span><span class="n">message1</span>
+    <span class="p">)</span>
+
+    <span class="n">marker</span><span class="o">.</span><span class="n">popup</span><span class="o">=</span><span class="n">popup</span>
+    <span class="n">marker</span><span class="o">.</span><span class="n">icon</span><span class="o">=</span><span class="n">icon1</span>
+
+
+
+
+<span class="n">lugares</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'lugares.csv'</span><span class="p">)</span>
+
+<span class="n">lugaresagregados</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">def</span> <span class="nf">on_location_changed</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c1"># Do some computation given the new marker location, accessible from `event['new']`</span>
+    <span class="n">lugaresagregados</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marker</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+    <span class="k">pass</span>
+
+
+<span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">38.9774</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.0453</span><span class="p">)</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">m</span><span class="o">=</span><span class="n">Map</span><span class="p">(</span>
+    <span class="c1">#basemap=basemaps.OpenStreetMap.HOT,</span>
+    <span class="c1">#basemap=basemaps.OpenTopoMap,</span>
+    <span class="c1">#basemap=basemaps.Gaode.Satellite,</span>
+    <span class="n">basemap</span><span class="o">=</span><span class="n">basemaps</span><span class="o">.</span><span class="n">Esri</span><span class="o">.</span><span class="n">WorldImagery</span><span class="p">,</span>
+    <span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span>
+    <span class="n">zoom</span><span class="o">=</span><span class="mi">14</span>
+<span class="p">)</span>
+<span class="n">locations</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+    <span class="n">locations</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span><span class="n">i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">i</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">]])</span>
+
+<span class="n">heatmap</span> <span class="o">=</span> <span class="n">Heatmap</span><span class="p">(</span>
+    <span class="n">locations</span><span class="o">=</span><span class="n">locations</span><span class="p">,</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mi">15</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">heatmap</span><span class="p">)</span>
+
+<span class="c1"># Agregar Puestos</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lugares</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+    <span class="n">marker</span> <span class="o">=</span> <span class="n">Marker</span><span class="p">(</span> <span class="n">draggable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">marker</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">marker</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="n">i</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">addlabel</span><span class="p">(</span><span class="n">marker</span><span class="p">,</span><span class="n">i</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">i</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
+<span class="n">marker</span> <span class="o">=</span> <span class="n">Marker</span><span class="p">(</span> <span class="n">draggable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">marker</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">center</span>
+<span class="n">marker</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_location_changed</span><span class="p">,</span> <span class="s1">'location'</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># Now that the marker is on the Map, you can drag it with your mouse,</span>
+<span class="c1"># it will automatically update the `marker.location` attribute in Python</span>
+
+<span class="c1"># You can also update the marker location from Python, that will update the</span>
+<span class="c1"># marker location on the Map:</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>Map(center=[-38.9774, -68.0453], controls=(ZoomControl(options=[&#39;position&#39;, &#39;zoom_in_text&#39;, &#39;zoom_in_title&#39;, &#39;…</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"Temperatura.csv"</span><span class="p">)</span>
+<span class="n">df_temp</span><span class="p">[</span><span class="s1">'fecha'</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_temp</span><span class="p">[</span><span class="s2">"fecha"</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'</span><span class="si">%d</span><span class="s1">-%m-%Y'</span><span class="p">)</span>
+
+<span class="c1">#df_temp</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14192,26 +14338,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#from ipyleaflet import Map, basemapa</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"Temperatura.csv"</span><span class="p">)</span>
-<span class="n">df_temp</span><span class="p">[</span><span class="s1">'fecha'</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_temp</span><span class="p">[</span><span class="s2">"fecha"</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'</span><span class="si">%d</span><span class="s1">-%m-%Y'</span><span class="p">)</span>
-
-<span class="c1">#df_temp</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_lugares</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lugaresagregados</span><span class="p">)</span>
+<span class="n">df_lugares</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'lugaresagregados.csv'</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14226,7 +14354,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="agrupado_embarcacion-Temporada">agrupado_embarcacion Temporada<a class="anchor-link" href="#agrupado_embarcacion-Temporada">&#182;</a></h3>
+<h3 id="Totales-Temporada">Totales Temporada<a class="anchor-link" href="#Totales-Temporada">&#182;</a></h3>
 </div>
 </div>
 </div>

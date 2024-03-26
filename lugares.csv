@@ -1,0 +1,24 @@
+id,lat,long,desc,name,color
+0,-38.981096369754695,-68.05686950683595,Remolino Falher,repeat,red
+1,-38.977401,-68.045367,Remolino Linares,repeat,red
+2,-38.97952841381698,-68.0521059036255,Playita,life-ring,green
+3,-38.972789144062,-68.04699897766115,Casilla Municipal,life-ring,green
+4,-38.977593441605556,-68.04800748825075,Canoa,life-ring,green
+5,-38.97747667434939,-68.04641962051393,Pocha,life-ring,green
+6,-38.97864433824636,-68.04046511650087,Paseo Limay,life-ring,green
+7,-38.97997044746293,-68.03389906883241,Curva Tronador,home,green
+8,-38.97629230987017,-68.02354574203493,Mirador,camera,blue
+9,-38.98099628849823,-68.01406145095827,Ultimo mirador,camera,blue
+10,-38.98776813442492,-68.00743103027345,Falsa Confluencia,camera,blue
+11,-38.992971674371425,-68.05944442749025,Laguna de los Cisnes,camera,blue
+21,-38.985933461820615,-68.05701971054079, 2 troncos medio del río,tree,purple
+22,-38.98809336687921,-68.05539965629579, 1 tronco a 30m costa RN altura alamo inclinado,tree,purple
+23,-38.97939496915516,-68.0376434326172, 1 tronco a 20m costa costa RN altura sauce,tree,purple
+24,-38.97887786871516,-68.03009033203126, 1 troco a 20m costa costa RN altura arbol seco,tree,purple
+25,-38.9766259356712,-68.02440404891969, 1 troco antes de mirador 10m costa NQN,tree,purple
+26,-38.976659298164854,-68.02270889282228, 1 troco despues mirador 20m costa RN,tree,purple
+27,-38.97766016566548,-68.01848173141481, pedrero,dot-circle-o,purple
+28,-38.98670069433077,-68.01090717315675, 1 tronco a 10m costa lado RN,tree,purple
+29,-38.987651383948624,-68.0090618133545, 1 tronco medio del rio antes falsa confluencia,tree,purple
+30,-38.98860206079836,-68.0065941810608, 1 tronco medio del río despues de falsa confluencia,tree,purple
+31,-38.98139661267529,-68.05386543273927, Base frente a playita,home,green
